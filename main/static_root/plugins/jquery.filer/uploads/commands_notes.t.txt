@@ -1,0 +1,26 @@
+rostopic pub -r 10 /novus_robot_node/robot_info novus_msgs/RobotInfo "{id: 'ROBOTID', status: 'COMM_WAIT_FOR_CONNECTION', battery_status: 'HALF', distance_travelled: 150.0, estop_status: false,
+  drive_comm_status: false, ui_pause: false}" 
+
+        "INIT";
+        "COMM_CONNECTED";
+        "COMM_WAIT_FOR_CONNECTION";
+        "AUTO_WAIT_FOR_RUN";
+        "AUTO_RUN";
+        "AUTO_OBSTACLE";
+        "AUTO_SYSTEM_FAULT";
+        "UI_PAUSE";
+        "MANUAL";
+        "ESTOP_PRESSED";
+        "UNKNOWN";
+		
+this is for the all ok (blue background)
+rostopic pub -r 10 /event_info novus_msgs/EventInfo "event_code: 'X00' 
+event_description: 'ALL GOOD'" 
+
+this is for the warning (yellow background)
+rostopic pub -r 10 /event_info novus_msgs/EventInfo "event_code: 'W00' 
+event_description: 'ALL GOOD'" 
+
+this is for the failed (red background) 
+rostopic pub -r 10 /event_info novus_msgs/EventInfo "event_code: 'F00' 
+event_description: 'ALL GOOD'"

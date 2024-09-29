@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        
+        {% if not request.session.username %}  
+            <meta http-equiv="REFRESH" content="0;url=https://iverify.droidal.com/cas/login/"> 
+        {% endif %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Iverify - Espire">
+        <meta name="author" content="Coderthemes">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+        <!-- App title -->
+        <title>Ev Request Edit</title>
+
+        <!-- -->
+        <link href="{% static 'plugins/timepicker/bootstrap-timepicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'plugins/clockpicker/css/bootstrap-clockpicker.min.css' %}" rel="stylesheet">
+		<link href="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.css' %}" rel="stylesheet">
+        <!-- App css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/pages.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/menu.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="{% static 'plugins/switchery/switchery.min.css' %}">
+
+     
+
+        <script src="{% static 'assets/js/modernizr.min.js' %}"></script>
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper"  class="enlarged forced">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                
+              
+
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                          <!-- Navbar-left -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <!-- <li>
+                                <button class="button-menu-mobile open-left waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li> -->
+
+                            
+                            <li>
+                                <img src="{% static 'assets/images/logo.png' %}" alt="" style="width: -webkit-fill-available;height: 65px;margin-left: -40px;">
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Right(Notification) -->
+                        <ul class="nav navbar-nav navbar-right">
+                               
+
+                            <li class="hidden-xs" style="font-size: 140%;font-weight: 900;padding-top: 6%;">
+                                <a href="#" class="menu-item" style="color: black;">Hi, {{ request.session.username }}</a>
+                            </li>
+
+                            
+                            <li class="hidden-xs" style="padding-top: 12%;">
+                                <a href="/cas/logout/"  class="btn btn-xs w-xs btn-primary w-xs">Logout</a>
+                            </li>
+                               
+
+                               
+                        </ul> <!-- end navbar-right -->
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul> 
+
+                            <li>
+                                <a href="/cas/welcome/" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Home </span></a>
+                            </li>
+
+                           
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+ 
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+ 
+
+
+                        <div class="row"> 
+                            <div class="clearfix"></div>
+                                <div class="card-box">  
+
+                                        <h4 class="header-title m-t-0">EV Form </h4>
+                                         
+                                        <div class="p-20">
+                                            <form action="#" method="post" data-parsley-validate novalidate>
+                                                {% csrf_token %} 
+
+                                                <div class="row"> 
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Date of Service</label>
+                                                        <input type="date" name="date_of_service" parsley-trigger="change" 
+                                                             placeholder="mm/dd/yyyy" value="{{datas.Date_of_service}}" class="form-control" id="">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Patient Name</label>
+                                                        <input type="text" name="patient_name" parsley-trigger="change" 
+                                                            placeholder="Enter Patient Name" value="{{datas.patient_name}}" class="form-control" id="patient_name" required>
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Patient ID</label>
+                                                        <input type="text" name="patient_id" parsley-trigger="change" 
+                                                            placeholder="Enter Patient ID" value="{{datas.patient_id}}" class="form-control" id="patient_id">
+                                                    </div>
+
+                                                </div>
+
+                                                
+                                                <div class="row"> 
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Patient DOB</label>
+                                                        <input type="date" class="form-control" value="{{datas.patient_dob}}"  name="patient_dob" placeholder="mm/dd/yyyy" id="" parsley-trigger="change" >
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Plan/Network</label>
+                                                        <input type="text" name="plan_network" parsley-trigger="change" 
+                                                            placeholder="Enter Plan Network"  value="{{datas.plan_network}}" class="form-control" id="plan_network">
+                                                    </div>
+
+                                                </div>
+ 
+                                                 
+
+                                                <div class="row">  
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Subscriber ID</label>
+                                                        <input type="text" name="subscriber_id" parsley-trigger="change" 
+                                                            placeholder="Enter Subscriber ID" value="{{datas.subscriber_id}}"  class="form-control" id="subscriber_id">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Subscriber Name</label>
+                                                        <input type="text" name="subscriber_name" parsley-trigger="change" 
+                                                               placeholder="Enter Subscriber Name"  value="{{datas.subscriber_name}}" class="form-control" id="subscriber_name">
+                                                    </div>
+                                                    <div class="form-group col-md-4">
+                                                        <label for="userName">Subscriber DOB</label>
+                                                        <input type="date" class="form-control" value="{{datas.subscriber_dob}}" name="subscriber_dob" placeholder="mm/dd/yyyy"   parsley-trigger="change" >
+                                                    </div>
+                                                </div>
+                                                
+
+                                                
+                                                
+                                                <div class="clearfix"></div>
+                                                <div class="form-group text-right m-b-0">
+                                                    <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                                        Submit
+                                                    </button>
+                                                    <a href="/cas/registration/" class="btn btn-default waves-effect m-l-5">
+                                                        Cancel
+                                                    </a>
+                                                </div>
+
+                                            </form>
+                                        </div>
+ 
+
+                                </div> 
+ 
+                        </div>
+                        <!-- end row -->
+
+ 
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2024 © Droidal.
+                </footer>
+
+            </div>
+
+
+          
+
+
+       
+        </div>
+        <!-- END wrapper -->
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/detect.js' %}"></script>
+        <script src="{% static 'assets/js/fastclick.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'assets/js/waves.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.scrollTo.min.js' %}"></script>
+        <script src="{% static 'plugins/switchery/switchery.min.js' %}"></script>
+
+        
+
+        <script type="text/javascript" src="{% static 'plugins/parsleyjs/parsley.min.js' %}"></script> 
+
+
+        <script src="{% static 'plugins/timepicker/bootstrap-timepicker.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'plugins/clockpicker/js/bootstrap-clockpicker.min.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.app.js' %}"></script>
+        <script type="text/javascript">
+			$(document).ready(function() {
+				$('form').parsley();
+			});
+        </script>
+
+        
+        <!-- Init js -->
+        <script src="{% static 'assets/pages/jquery.form-pickers.init.js' %}"></script>
+    </body>
+</html>

@@ -1,0 +1,210 @@
+
+{% load static %}
+    
+
+
+<!doctype html>
+<html lang="en">
+  <!-- [Head] start -->
+
+  <head>
+    <title>Home | droi</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
+    />
+    <meta
+      name="keywords"
+      content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
+    />
+    <meta name="author" content="Phoenixcoded" />
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="{% static 'images/claimbridge.png' %}" type="image/x-icon" />
+ <!-- [Font] Family -->
+<link rel="stylesheet" href="{% static 'fonts/inter/inter.css' %}" id="main-font-link" />
+<!-- [phosphor Icons] https://phosphoricons.com/ -->
+<link rel="stylesheet" href="{% static 'fonts/phosphor/duotone/style.css' %}" />
+<!-- [Tabler Icons] https://tablericons.com -->
+<link rel="stylesheet" href="{% static 'fonts/tabler-icons.min.css' %}" />
+<!-- [Feather Icons] https://feathericons.com -->
+<link rel="stylesheet" href="{% static 'fonts/feather.css' %}" />
+<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+<link rel="stylesheet" href="{% static 'fonts/fontawesome.css' %}" />
+<!-- [Material Icons] https://fonts.google.com/icons -->
+<link rel="stylesheet" href="{% static 'fonts/material.css' %}" />
+<!-- [Template CSS Files] -->
+<link rel="stylesheet" href="{% static 'css/style.css'  %}" id="main-style-link"/>
+<link rel="stylesheet" href="{% static 'css/style-preset.css' %}" />
+
+
+<style>
+  body{
+    overflow-x: hidden;
+  }
+  .form-control {
+      font-size: 1rem;
+      padding: -15px 20px;
+  }
+  label {
+      font-size: 1rem;
+  }
+  .form-group {
+      margin-bottom: 0;
+  }
+
+  .table td, .table th {
+      padding: -5px;
+  }
+</style>
+
+  </head>
+  <!-- [Head] end -->
+  <!-- [Body] Start -->
+
+  <body
+    data-pc-preset="preset-1"
+    data-pc-sidebar-caption="true"
+    data-pc-direction="ltr"
+    data-pc-theme_contrast=""
+    data-pc-theme="light"
+    class="landing-page"
+  >
+  <!-- <div class="img">
+    <img src="{% static 'images/undraw_medicine_b-1-ol.svg' %}" alt="" style="position: absolute; z-index: -111111; width: 100vw; height: 100vh;">
+  </div> -->
+    <!-- [ Pre-loader ] start -->
+    <div class="page-loader">
+      <div class="bar"></div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+
+    <!-- [ Header ] start -->
+    <header id="home">
+      <!-- [ Nav ] start -->
+      <!-- [ Nav ] start -->
+      <nav class="navbar navbar-expand-md navbar-light default">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="{% static 'images/claimbridge.png' %}" style="width: 150px;" alt="logo" />
+          </a>
+          <button
+            class="navbar-toggler rounded"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+              <!-- <li class="nav-item px-1">
+                <a class="nav-link" href="https://phoenixcoded.gitbook.io/able-pro/" target="_blank">Documentation</a>
+              </li>
+              <li class="nav-item px-1">
+                <a class="nav-link" href="dashboard/index.html">Live Preview</a>
+              </li> -->
+              <!-- <li class="nav-item px-1 me-2 mb-2 mb-md-0">
+                <a
+                  class="btn btn-icon btn-light-dark"
+                  target="_blank"
+                  href="https://github.com/phoenixcoded/able-pro-free-admin-dashboard-template"
+                  ><i class="ti ti-brand-github"></i
+                ></a>
+              </li> -->
+              <!-- <li class="nav-item">
+                <a class="btn btn btn-success btn-buy" target="_blank" href="/login/"
+                  >Login <i class="ti ti-external-link"></i
+                ></a>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- [ Nav ] start -->
+
+      <!-- [ Nav ] start -->
+      
+      <div class="container">
+        
+        <div class="row justify-content-center">
+          <div class="col-md-10 text-center">
+            <h1 class="mb-4 wow fadeInUp" data-wow-delay="0.2s">
+              Medical Records Request
+            </h1>
+            <div class="row justify-content-center wow fadeInUp" data-wow-delay="0.3s">
+              <div class="col-md-8">
+                <p class="text-muted f-16 mb-0">
+                  You have reached the Upstream Rehabilitation Medical Records Portal. Here, you can either upload a new request or track an existing request. If you are a patient in need of medical records, please reach out to the ROI department or to the treating facility for a Release of Information form prior to requesting. For additional assistance, please call <a href="tel:+18443196137">844-319-6137</a> or email <a href="mailto:roi@urpt.com">roi@urpt.com</a>.
+                </p>
+                
+              </div>
+            </div>
+            <div class="my-4 my-sm-5 wow fadeInUp" data-wow-delay="0.4s">
+              <a href="/external_request" class="btn btn-primary">Submit New  Request</a>
+              <a href="/track_record" class="btn btn-primary">Track Existing Request</a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </header>
+    <!-- [ Header ] End -->
+  
+    <!-- [ companies apps ] End -->
+
+    <!-- [ footer apps ] start -->
+
+    <!-- [ footer apps ] End -->
+                  
+                      <!-- [Page Specific JS] start -->
+                      <!-- [Page Specific JS] end -->
+                      <!-- Required Js -->
+                      <script src="{% static 'js/plugins/popper.min.js' %}"></script>
+                      <script src="{% static 'js/plugins/simplebar.min.js' %}"></script>
+                      <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+                      <script src="{% static 'js/fonts/custom-font.js' %}"></script>
+                      <script src="{% static 'js/pcoded.js' %}"></script>
+                      <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+                      
+                      <script>
+                        layout_change('light');
+                      </script>
+                        
+                      <script>
+                        change_box_container('false');
+                      </script>
+                       
+                      <script>
+                        layout_caption_change('true');
+                      </script>
+                       
+                      <script>
+                        layout_rtl_change('false');
+                      </script>
+                       
+                      <script>
+                        preset_change('preset-1');
+                      </script>
+                       
+                      <script>
+                        main_layout_change('vertical');
+                      </script>
+                      
+                  
+                    </body>
+                    <!-- [Body] end -->
+                  </html>
+                  
+
+        
+        <!-- Init js -->
+     

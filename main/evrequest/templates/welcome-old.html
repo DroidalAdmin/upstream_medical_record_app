@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    
+    {% if not request.session.username %}  
+        <meta http-equiv="REFRESH" content="0;url=/login"> 
+    {% endif %}
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Iverify - Espire">
+        <meta name="author" content="Coderthemes">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+        <!-- App title -->
+        <title>iVerify -  Dashboard</title>
+
+        <!-- App css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/pages.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/menu.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="{% static 'plugins/switchery/switchery.min.css' %}">
+
+     
+
+        <script src="{% static 'assets/js/modernizr.min.js' %}"></script>
+
+    </head>
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper" class="enlarged forced">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+              
+
+
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                        <!-- Navbar-left -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <!-- <li>
+                                <button class="button-menu-mobile open-left waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li> -->
+
+                            <li>
+                                <img src="{% static 'assets/images/logo.png' %}" alt="" style="width: -webkit-fill-available;height: 65px;margin-left: -40px;">
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Right(Notification) -->
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li class="hidden-xs" style="font-size: 140%;font-weight: 900;padding-top: 6%;">
+                                <a href="#" class="menu-item" style="color: black;">Hi, {{ request.session.username }}</a>
+                            </li>
+
+                            
+                            <li class="hidden-xs" style="padding-top: 12%;">
+                                <a href="/upstream/logout/"  class="btn btn-xs w-xs btn-primary w-xs">Logout</a>
+                            </li>
+                               
+
+                         
+
+                        </ul> <!-- end navbar-right -->
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul> 
+
+                            <li>
+                                <a href="/upstream/welcome/" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Home </span></a>
+                            </li>
+
+                           
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+ 
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+ 
+
+
+                        <div class="row"> 
+                            <div class="clearfix"></div>
+                                <div class="card-box"> 
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="active">
+                                            <a href="/upstream/welcome/">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/upstream/registration/">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">Registration</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/upstream/analytics/">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">Analytics</span>
+                                            </a>
+                                        </li>
+                                        {% if request.session.usertype == 'admin' %}  
+                                        <li class="">
+                                            <a href="/upstream/userlist/"  >
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">Users List</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        <!-- <li class="">
+                                            <a href="#messages" data-toggle="tab" aria-expanded="false">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">Statistics</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#settings" data-toggle="tab" aria-expanded="false">
+                                                <span class="visible-xs"><i class="fa fa-cog"></i></span>
+                                                <span class="hidden-xs">Online Manual</span>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="home">       
+                                                <div class="row m-b-30">
+                                                    <div class="col-md-8">
+                                                        <form action="/upstream/daterange/">
+                                                            <label for="birthday">From Date Range:</label>
+                                                            <input type="date"   id="birthday" name="fromdate" >
+                                                            <label for="birthday">To Date Range:</label>
+                                                            <input type="date"   id="birthday" name="todate">
+                                                            <input type="submit">
+                                                        </form>
+                                                          
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        
+                                                        <a href="/upstream/newev/" style="float: right;" class="btn btn-primary waves-effect w-md waves-light m-b-5">New EV Request</a>
+                                                        <a href="#" style="float: right;margin-right: 2%;" class="btn btn-primary waves-effect w-md waves-light m-b-5" data-toggle="modal" data-target="#myModal" >Upload Data</a>
+                                                    </div>
+                                                    
+                                                </div>                                   
+                         
+                                                <div class="row">      
+                        
+                                                                
+                                                                <div class="col-lg-12"> 
+                                                                        <h4 class="header-title m-t-0 m-b-30">Recent Registrations</h4>
+                                    
+                                                                        <div class="table-responsive">
+                                                                            <table class="table table table-hover m-0">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>#</th>
+                                                                                        <th>Claim Number</th> 
+                                                                                        <th>Patient Name</th>
+                                                                                        <th>Insurance</th> 
+                                                                                        <th>Status</th> 
+                                                                                        <th>Assigned To</th> 
+                                                                                        <th>Birthday</th> 
+                                                                                        <th>Member ID </th>   
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody> 
+                                                                                    {% for data in datas %}     
+                                                                                            <tr> 
+                                                                                                <td>{{ forloop.counter }}</td>   
+                                                                                                <td>{{data.Claim_Number}}  </td>      
+                                                                                                <td>{{data.Patient_Full_Name}}  </td>      
+                                                                                                <td>{{data.Insurance}}  </td>      
+                                                                                                <td>{{data.cas_status}}  </td>      
+                                                                                                <td>{{data.cas_assigned_name}}  </td>   
+                                                                                                <td>{{data.Patient_Birthday}}  </td>  
+                                                                                                <td>{{data.Primary_Member_ID}}  </td>         
+                                                                                              
+
+                                                                                            </tr>  
+                                                                                        {% endfor %}
+                                                                                    </tbody>
+                                                                            </table>
+                                    
+                                                                        </div> <!-- table-responsive --> 
+                                                                </div>
+
+                                                                              
+                                                                <!-- <div class="col-md-4">
+                                                                    <div class="demo-box">
+                                                                        <h4 class="header-title m-t-0">Pie Chart</h4>
+                                                                         
+                        
+                                                                        <div class="google-chart text-center">
+                                                                            <div class="chart" id="pie-3d-chart"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div> -->
+                                                                <div class="col-md-4">
+                                                                    <div class="demo-box">
+                                                                    {% autoescape off %}
+                                                                    {{ plot_div }}
+                                                                    {% endautoescape %}
+                                                                    </div>
+                                                                </div>
+                                                </div>
+                                                <!-- end row -->
+                        
+                         
+                                        </div>
+                                        <div class="tab-pane" id="profile">
+                                            <p>Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim.</p>
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.</p>
+                                        </div>
+                                        <div class="tab-pane" id="messages">
+                                            <p>Statistics Content</p>
+                                             
+                                        </div>
+                                        <div class="tab-pane" id="settings">
+                                            <p>Online Manual Content</p>
+                                        </div>
+                                    </div>
+                                </div> 
+ 
+                        </div>
+                        <!-- end row -->
+
+ 
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2024 © Droidal.
+                </footer>
+
+            </div>
+
+
+          
+
+
+       
+        </div>
+        <!-- END wrapper -->
+
+        <div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="myModalLabel">File Upload</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" method="post" enctype="multipart/form-data"  action="{% url 'updatefilerecord' %}" >
+                            {% csrf_token %}
+                            <input type="hidden" id="queue_id" name="queue_id" />
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Upload</label>
+                                <div class="col-md-10">
+                                    <input type="file" required  accept="application/JSON" id="form_upload" name="form_upload">
+                                </div>
+                            </div>
+                              
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/detect.js' %}"></script>
+        <script src="{% static 'assets/js/fastclick.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'assets/js/waves.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.scrollTo.min.js' %}"></script>
+        <script src="{% static 'plugins/switchery/switchery.min.js' %}"></script>
+
+        <!-- Google Charts js -->
+	    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <!-- Init -->
+        <script type="text/javascript" src="{% static 'assets/pages/jquery.google-charts.init.js' %}"></script>
+
+
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.app.js' %}"></script>
+
+    </body>
+</html>

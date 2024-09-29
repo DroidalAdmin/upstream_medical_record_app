@@ -1,0 +1,172 @@
+{% load static %}
+<html lang="en">
+    <!-- [Head] start -->
+  
+    <head>
+      <title>Login | Upstream</title>
+      <!-- [Meta] -->
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta
+        name="description"
+        content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
+      />
+      <meta
+        name="keywords"
+        content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
+      />
+      <meta name="author" content="Phoenixcoded" />
+  
+      <!-- [Favicon] icon -->
+      <link rel="icon" href="{% static 'images/claimbridge.png' %}" type="image/x-icon" />
+   <!-- [Font] Family -->
+  <link rel="stylesheet" href="{% static 'fonts/inter/inter.css' %}" id="main-font-link" />
+  <!-- [phosphor Icons] https://phosphoricons.com/ -->
+  <link rel="stylesheet" href="{% static 'fonts/phosphor/duotone/style.css' %}" />
+  <!-- [Tabler Icons] https://tablericons.com -->
+  <link rel="stylesheet" href="{% static 'fonts/tabler-icons.min.css' %}" />
+  <!-- [Feather Icons] https://feathericons.com -->
+  <link rel="stylesheet" href="{% static 'fonts/feather.css' %}" />
+  <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+  <link rel="stylesheet" href="{% static 'fonts/fontawesome.css' %}" />
+  <!-- [Material Icons] https://fonts.google.com/icons -->
+  <link rel="stylesheet" href="{% static 'fonts/material.css' %}" />
+  <!-- [Template CSS Files] -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" id="main-style-link" />
+  <link rel="stylesheet" href="{% static 'css/style-preset.css' %}" />
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  
+    </head>
+    <!-- [Head] end -->
+    <!-- [Body] Start -->
+  
+    <body data-pc-preset="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="ltr" data-pc-theme_contrast="" data-pc-theme="light">
+      <!-- [ Pre-loader ] start -->
+      <div class="page-loader">
+        <div class="bar"></div>
+      </div>
+      <!-- [ Pre-loader ] End -->
+  
+      <div class="auth-main">
+        <div class="auth-wrapper v2">
+          <div class="auth-sidecontent" style="margin-left: 10%;">
+            <lottie-player class="img-auth-side" src="https://lottie.host/84ee3efc-03c0-4613-b543-5f30d152e499/6nJJwdbqHQ.json" background="transparent" speed="1" style="width: 350px; height: 400px;" loop autoplay></lottie-player>
+        </div>
+          <div class="auth-form">
+            <div class="card my-5">
+              <div class="card-body">
+                <div class="text-center mb-4">
+                  <img src="{% static 'images/claimbridge.png' %}"  width="150px" alt="logo" />
+  
+                </div>
+                <h4 class="text-center f-w-500 mb-3">Enter the Passcode</h4>                                
+                <!-- {% for message in messages %}
+                                        <div class="alert alert-success" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %} -->
+                                    <form class="form-horizontal" method="POST" action="/login/">
+                                        {% csrf_token %}
+                                          <input type="hidden" name="mfauid" id="mfauid" value="{{uid}}" />
+                                          <input type="hidden" name="mfasecretkey" id="mfasecretkey" value="{{secret}}" />
+                          
+                                          <label for="otp"></label>
+                                          <div id="otp" class="d-flex justify-content-between">
+                                              <input id="mfapassword" class="form-control otp-input" type="password" maxlength="6" required="" name="mfapassword">
+                                          </div>
+
+                          
+                                          <div class="form-group account-btn text-center m-t-10">
+                                              <div class="col-xs-12">
+                                                  <button class="btn btn-primary" type="submit">Submit</button>
+                                              </div>
+                                          </div>
+                                      </form>
+ 
+                                </div>
+                            </div>
+                            <div>
+                              <h6 style="position: absolute; bottom: 0; right: 3;"> <span><img src="{% static 'images/favicon1.png' %}" alt="img" style="height: 20px; margin-bottom: 3px;"></span> Powered by Droidal</h6> 
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                      <!-- [ Main Content ] end -->
+                      <!-- Required Js -->
+                      <script src="{% static 'js/plugins/popper.min.js' %}"></script>
+                      <script src="{% static 'js/plugins/simplebar.min.js' %}"></script>
+                      <script src="{% static 'js/plugins/bootstrap.min.js' %}"></script>
+                      <script src="{% static 'js/fonts/custom-font.js' %}"></script>
+                      <script src="{% static 'js/pcoded.js' %}"></script>
+                      <script src="{% static 'js/plugins/feather.min.js' %}"></script>
+                      
+                      <script>
+                        layout_change('light');
+                      </script>
+                        
+                      <script>
+                        change_box_container('false');
+                      </script>
+                       
+                      <script>
+                        layout_caption_change('true');
+                      </script>
+                       
+                      <script>
+                        layout_rtl_change('false');
+                      </script>
+                       
+                      <script>
+                        preset_change('preset-1');
+                      </script>
+                       
+                      <script>
+                        main_layout_change('vertical');
+                      </script>
+                      
+                   
+
+
+
+                  
+
+
+
+
+
+
+
+                  
+                  
+                    </body>
+                    <!-- [Body] end -->
+                  </html>
+                  <style>
+                    .otp-group {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      margin-top: 20px;
+                  }
+                  
+                  .otp-input {
+                      width: 100%;
+                      height: 40px;
+                      margin: 0 5px;
+                      text-align: center;
+                      font-size: 18px;
+                      border: 1px solid #ccc;
+                      border-radius: 4px;
+                      transition: border-color 0.3s ease;
+                      letter-spacing: 43px; /* Updated to 3px to handle each digit */
+                  }
+
+                  
+                  .otp-input:focus {
+                      border-color: #007bff;
+                      outline: none;
+                  }
+                  
+                  </style>

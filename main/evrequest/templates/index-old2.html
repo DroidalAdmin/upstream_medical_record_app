@@ -1,0 +1,360 @@
+
+<!DOCTYPE html>
+<html>
+    {% load static %}
+    
+    {% if not request.session.username %}  
+        <meta http-equiv="REFRESH" content="0;url=/login"> 
+    {% endif %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Iverify - Espire">
+        <meta name="author" content="Coderthemes">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+        <!-- App title -->
+        <title>iVerify -  Dashboard</title>
+        <!-- DataTables -->
+        <link href="{% static 'plugins/datatables/jquery.dataTables.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/buttons.bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/fixedHeader.bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/responsive.bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/scroller.bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/dataTables.colVis.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/dataTables.bootstrap.min.css' %}" rel="stylesheet" type="text/css"/>
+        <link href="{% static 'plugins/datatables/fixedColumns.dataTables.min.css' %}" rel="stylesheet" type="text/css"/>
+
+        <!-- App css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/core.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/components.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/icons.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/pages.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/menu.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/responsive.css' %}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="{% static 'plugins/switchery/switchery.min.css' %}">
+
+     
+
+        <script src="{% static 'assets/js/modernizr.min.js' %}"></script>
+
+    </head>
+
+
+    <body class="fixed-left">
+
+        <!-- Begin page -->
+        <div id="wrapper"  class="enlarged forced">
+
+            <!-- Top Bar Start -->
+            <div class="topbar">
+
+                <!-- LOGO -->
+                
+                <!-- Button mobile view to collapse sidebar menu -->
+                <div class="navbar navbar-default" role="navigation">
+                    <div class="container">
+
+                          <!-- Navbar-left -->
+                        <ul class="nav navbar-nav navbar-left">
+                            <!-- <li>
+                                <button class="button-menu-mobile open-left waves-effect">
+                                    <i class="mdi mdi-menu"></i>
+                                </button>
+                            </li> -->
+
+                            <li>
+                                <img src="{% static 'assets/images/logo.png' %}" alt="" style="width: -webkit-fill-available;height: 65px;margin-left: -40px;">
+                            </li>
+                            
+                        </ul>
+
+                        <!-- Right(Notification) -->
+                        <ul class="nav navbar-nav navbar-right">
+                               
+                            <li class="hidden-xs" style="font-size: 140%;font-weight: 900;padding-top: 6%;">
+                                <a href="#" class="menu-item" style="color: black;">Hi, {{ request.session.username }}</a>
+                            </li>
+
+                            
+                            <li class="hidden-xs" style="padding-top: 12%;">
+                                <a href="/upstream/logout/"  class="btn btn-xs w-xs btn-primary w-xs">Logout</a>
+                            </li>
+                               
+
+
+                        </ul> <!-- end navbar-right -->
+
+                    </div><!-- end container -->
+                </div><!-- end navbar -->
+            </div>
+            <!-- Top Bar End -->
+
+
+            <!-- ========== Left Sidebar Start ========== -->
+            <div class="left side-menu">
+                <div class="sidebar-inner slimscrollleft">
+
+                    <!--- Sidemenu -->
+                    <div id="sidebar-menu">
+                        <ul> 
+
+                            <li>
+                                <a href="/upstream/welcome/" class="waves-effect"><i class="mdi mdi-view-dashboard"></i><span> Home </span></a>
+                            </li>
+
+                           
+
+                        </ul>
+                    </div>
+                    <!-- Sidebar -->
+                    <div class="clearfix"></div>
+ 
+
+                </div>
+                <!-- Sidebar -left -->
+
+            </div>
+            <!-- Left Sidebar End -->
+
+
+
+            <!-- ============================================================== -->
+            <!-- Start right Content here -->
+            <!-- ============================================================== -->
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+                    <div class="container">
+
+ 
+
+
+                        <div class="row"> 
+                            <div class="clearfix"></div>
+                                <div class="card-box"> 
+
+                                    <ul class="nav nav-tabs">
+                                        <li class="">
+                                            <a href="/upstream/welcome/">
+                                                <span class="visible-xs"><i class="fa fa-home"></i></span>
+                                                <span class="hidden-xs">Dashboard</span>
+                                            </a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="/upstream/registration/" >
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">Registration</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="/upstream/analytics/">
+                                                <span class="visible-xs"><i class="fa fa-user"></i></span>
+                                                <span class="hidden-xs">Analytics</span>
+                                            </a>
+                                        </li>
+                                        {% if request.session.usertype == 'admin' %}  
+                                        <li class="">
+                                            <a href="/upstream/userlist/"  >
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">Users List</span>
+                                            </a>
+                                        </li>
+                                        {% endif %}
+                                        <!-- <li class="">
+                                            <a href="#messages" data-toggle="tab" aria-expanded="false">
+                                                <span class="visible-xs"><i class="fa fa-envelope-o"></i></span>
+                                                <span class="hidden-xs">Statistics</span>
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#settings" data-toggle="tab" aria-expanded="false">
+                                                <span class="visible-xs"><i class="fa fa-cog"></i></span>
+                                                <span class="hidden-xs">Online Manual</span>
+                                            </a>
+                                        </li> -->
+                                    </ul>
+                                    <div class="tab-content"> 
+                                        <div class="tab-pane active" id="profile">
+                                             
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 class="m-t-0 header-title"><b>Registration </b></h4> 
+                                <div class="card-box table-responsive">
+ 
+                                    <table id="datatable" class="table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Claim Number</th> 
+                                            <th>Patient Name</th>
+                                            <th>Insurance</th> 
+                                            <th>Status</th> 
+                                            <th>Assigned To</th> 
+                                            <th>Birthday</th> 
+                                            <th>Member ID </th>  
+                                            <th>Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody> 
+                                        {% for data in datas %}     
+                                            <tr> 
+                                                <td>{{ forloop.counter }}</td>   
+                                                <td>{{data.Claim_Number}}  </td>      
+                                                <td>{{data.Patient_Full_Name}}  </td>      
+                                                <td>{{data.Insurance}}  </td>      
+                                                <td>{{data.cas_status}}  </td>      
+                                                <td>{{data.cas_assigned_name}}  </td>   
+                                                <td>{{data.Patient_Birthday}}  </td>  
+                                                <td>{{data.Primary_Member_ID}}  </td>         
+                                                <td class="actions text-center">  
+                                                    {% if  request.session.usertype == 'admin' or request.session.usertype == 'client'  %}   
+                                                    <a href="/upstream/deletecas/{{ data.casid }}" class="on-default remove-row" style="margin-left:10%;color: red;"><i class="fa fa-trash-o"></i></a>
+                                                    {% endif %}
+                                                   
+                                                </td>
+
+                                            </tr>  
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                                        </div>
+                                        <div class="tab-pane" id="messages">
+                                            <p>Statistics Content</p>
+                                             
+                                        </div>
+                                        <div class="tab-pane" id="settings">
+                                            <p>Online Manual Content</p>
+                                        </div>
+                                    </div>
+                                </div> 
+ 
+                        </div>
+                        <!-- end row -->
+
+ 
+                    </div> <!-- container -->
+
+                </div> <!-- content -->
+
+                <footer class="footer text-right">
+                    2024 © Droidal.
+                </footer>
+
+            </div>
+
+
+          
+
+
+       
+        </div>
+        <!-- END wrapper -->
+
+        
+        <div id="custom-width-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog" style="width:55%;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title" id="custom-width-modalLabel">Update Status</h4>
+                    </div> 
+                    <form method="GET" action="{% url 'statusupdatereg' %}" >
+                        {% csrf_token %}
+                    <div class="modal-body">
+                        <input type="hidden" name="remarkid" id="remarkid" />
+                        
+                        <div class="form-group" style="margin-top: 2%;">
+                            <label class="col-md-2 control-label">Status</label>
+                            <div class="col-md-10">
+                                <select class="form-control" id="status" name="status" required>
+                                    <option value="">-Select Status -</option>
+                                    {% if  request.session.usertype != 'rcm' %}  
+                                    <option value="Completed">Completed</option>
+                                    <option value="In-progress">In-progress</option>
+                                    <option value="Error">Error</option>
+                                    {% endif %}
+                                    {% if  request.session.usertype == 'rcm' %}  
+                                    <option value="In-Review">In-Review</option>
+                                    {% endif %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group"  style="margin-top: 10%;">
+                            <label class="col-md-2 control-label">Remarks</label>
+                            <div class="col-md-10">
+                                <textarea name="remarks" id="remarks" class="form-control">None</textarea>
+                            </div>
+                        </div>
+
+                    </div>   
+                    <div class="modal-footer" style="border: 0px !important;" > 
+                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary waves-effect waves-light">Save changes</button>
+                    </div>
+                </form> 
+                     
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div>
+ 
+
+
+
+        <script>
+            var resizefunc = [];
+        </script>
+
+        <!-- jQuery  -->
+        <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'assets/js/detect.js' %}"></script>
+        <script src="{% static 'assets/js/fastclick.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.blockUI.js' %}"></script>
+        <script src="{% static 'assets/js/waves.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.slimscroll.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.scrollTo.min.js' %}"></script>
+        <script src="{% static 'plugins/switchery/switchery.min.js' %}"></script>
+
+        <script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.bootstrap.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.buttons.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/buttons.bootstrap.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/jszip.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/pdfmake.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/vfs_fonts.js' %}"></script>
+        <script src="{% static 'plugins/datatables/buttons.html5.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/buttons.print.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.fixedHeader.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.keyTable.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.responsive.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/responsive.bootstrap.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.scroller.min.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.colVis.js' %}"></script>
+        <script src="{% static 'plugins/datatables/dataTables.fixedColumns.min.js' %}"></script>
+
+        <!-- init -->
+        <script src="{% static 'assets/pages/jquery.datatables.init.js' %}"></script>
+
+
+      
+
+        <!-- App js -->
+        <script src="{% static 'assets/js/jquery.core.js' %}"></script>
+        <script src="{% static 'assets/js/jquery.app.js' %}"></script>
+        <script src="{%static 'assets/js/sweetalert.min.js' %}"></script>
+    </body>
+</html>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#datatable').dataTable();
+    })
+
+</script>
