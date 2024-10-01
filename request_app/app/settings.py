@@ -29,9 +29,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['droidpoint.droidal.com','*']
+ALLOWED_HOSTS = ['35.89.152.96']
 
-#FORCE_SCRIPT_NAME ='/upstream'
+FORCE_SCRIPT_NAME ='/request-app'
 
 
 # Application definition
@@ -101,7 +101,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'upstream',
         'USER': 'postgres',
-        'PASSWORD': 'user1',
+        'PASSWORD': 'ws5UJQcCh3X@',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -152,7 +152,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # ... (other settings)
 
 # Static files (CSS, JavaScript, images)
-STATIC_URL = '/static/'
+STATIC_URL = '/request-app/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 ASSEST_URL = '/assests/'
 ASSEST_ROOT = os.path.join(BASE_DIR, 'assests')
@@ -163,7 +163,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
-MEDIA_ROOT = 'D:\\Project-Juniors\\upstream\\droidpointbackup_29-09\\droidpointbackup_26-09\\media\\'
+MEDIA_ROOT = '/home/ubuntu/request-app/Deployment/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
