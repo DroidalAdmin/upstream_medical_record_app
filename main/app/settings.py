@@ -31,7 +31,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['droidpoint.droidal.com','*']
 
-#FORCE_SCRIPT_NAME ='/upstream'
+FORCE_SCRIPT_NAME ='/main'
 
 
 # Application definition
@@ -104,7 +104,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'upstream',
         'USER': 'postgres',
-        'PASSWORD': 'user1',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -166,7 +166,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media') 
-MEDIA_ROOT = 'D:\\Project-Juniors\\upstream\\droidpointbackup_29-09\\droidpointbackup_26-09\\media\\'
+MEDIA_ROOT = '/home/ubuntu/media'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -178,6 +178,7 @@ CSRF_COOKIE_AGE = 1209600
 CSRF_USE_SESSIONS = False  
 CSRF_COOKIE_SAMESITE = 'Lax'  
 CSRF_COOKIE_HTTPONLY = True  
+CSRF_TRUSTED_ORIGINS  = ['https://droidpoint.droidal.com', ]
 
 # Session Settings
 SESSION_COOKIE_AGE = 1209600  # 2 weeks
@@ -185,7 +186,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_SECURE = True  
 SESSION_COOKIE_HTTPONLY = True  
 
-LOGIN_URL = '/login/'
+LOGIN_URL = '/main/login/'
 X_FRAME_OPTIONS = 'SAMEORIGIN'  # Allow iframes on the same origin
 
 

@@ -128,7 +128,7 @@ def send_acknowledgment_email(email, requestor_name, pk, patient_first_name, pat
 
     # Hardcode the base URL for local development
     # base_url = 'http://127.0.0.1:8000'  # Replace with your local URL if different
-    base_url = 'https://droidpoint.droidal.com/'
+    base_url = 'https://chartstream.urpt.com/request-app/'
 
     # Generate the track record URL dynamically
     track_url = reverse('track_record')  # Assuming you have a URL pattern named 'track_record'

@@ -9,15 +9,7 @@
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta
-        name="description"
-        content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
-      />
-      <meta
-        name="keywords"
-        content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
-      />
-      <meta name="author" content="Phoenixcoded" />
+
   
       <!-- [Favicon] icon -->
       <link rel="icon" href="{% static 'images/claimbridge.png' %}" type="image/x-icon" />
@@ -153,7 +145,7 @@ document.getElementById('verifyButton').addEventListener('click', function() {
 
     const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
-    fetch('/verify_email_otp/', {
+    fetch('/main/verify_email_otp/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -171,7 +163,7 @@ document.getElementById('verifyButton').addEventListener('click', function() {
                 confirmButtonText: 'OK'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = '/reset_password/'; // Redirect to reset password page
+                    window.location.href = '/main/reset_password/'; // Redirect to reset password page
                 }
             });
         } else {
@@ -252,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const email = "{{ request.session.email }}"; // Assuming email is stored in session
 
         // Add your resend OTP logic here, e.g., sending an AJAX request to the server
-        fetch('/send-otp/', {
+        fetch('/main/send-otp/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

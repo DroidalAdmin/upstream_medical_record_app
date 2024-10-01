@@ -64,26 +64,45 @@ def calculate_time_difference(from_datetime_str, to_datetime_str):
 
     return time_difference_formatted
 
-@login_required
+
 def analytics(request):
-    if request.method == 'GET':
-        # Sample data
-        labels = ['In-progress', 'Completed', 'Error']
-        values = [25, 30, 20]
-        colors = ['darkblue', 'cyan', 'royalblue']
+    try:
+        if request.method == 'GET':
+            
+            labels = ['In-progress', 'Completed', 'Error']
+            values = [25, 30, 20]
+            colors = ['darkblue', 'cyan', 'royalblue']
 
-        # Create a 3D Pie chart
-        fig = go.Figure(data=[go.Pie(labels=labels, values=values, marker=dict(colors=colors), pull=[0.1, 0, 0])])
+            print(f"Labels: {labels}, Values: {values}, Colors: {colors}")
 
-        fig.update_layout(
-            margin=dict(l=0, r=0, b=0, t=50),  # Adjust margin for better presentation
-            legend=dict(title='', orientation='h', y=1, yanchor='bottom', x=0.5, xanchor='center'),
-        )
+            fig = go.Figure(data=[go.Pie(labels=labels, values=values, marker=dict(colors=colors), pull=[0.1, 0, 0])])
 
-        plt_div = plot(fig, output_type='div')
-        context = {'plot_div': plt_div}
+            print(f"Figure created: {fig}")
 
-        return render(request, 'analytics.html', context)
+            fig.update_layout(
+                margin=dict(l=0, r=0, b=0, t=50),  # Adjust margin for better presentation
+                legend=dict(title='', orientation='h', y=1, yanchor='bottom', x=0.5, xanchor='center'),
+            )
+
+            print("Layout updated for the figure")
+
+            plt_div = plot(fig, output_type='div')
+
+            print(f"Plot Div: {plt_div[:100]}...")  
+
+            context = {'plot_div': plt_div}
+
+            # print(f"Context: {context}")
+
+            return render(request, 'analytics.html', context)
+        
+        else:
+            print("Received a non-GET request")
+            return render(request, 'analytics.html')
+
+    except Exception as e:
+        print(f"An error occurred in analytics view: {e}", exc_info=True)
+        return render(request, 'error.html', {'error': str(e)})
    
    
 def userlist(request):

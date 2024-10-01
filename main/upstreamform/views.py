@@ -32,88 +32,7 @@ from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.conf import settings
 
-# def clean_dollar_value(value):
-#     """
-#     This function strips the '$' symbol and converts the remaining string to a float.
-#     If the value is NaN or empty, it returns None.
-#     """
-#     if pd.notna(value) and isinstance(value, str) and '$' in value:
-#         return float(value.replace('$', '').replace(',', '').strip())
-#     elif pd.notna(value):
-#         return value
-#     else:
-#         return None
 
-# def import_data_view(request):
-#     if request.method == "POST":
-#         file_path = r'C:\Users\abdulwahid.j\Downloads\Charging list 2 - Copy(Sheet1).csv'
-#         df = pd.read_csv(file_path)
-
-#         for index, row in df.iterrows():
-#             charging_list_entry = ChargingList(
-#                 state=row['state'] if pd.notna(row['state']) else None,
-#                 category=row['Category'] if pd.notna(row['Category']) else None,
-#                 base_fare=clean_dollar_value(row['Base Fare']),
-#                 flat_fee=clean_dollar_value(row['Flat Fee']),
-#                 free_for=row['Free For'] if pd.notna(row['Free For']) else None,
-#                 per_page=clean_dollar_value(row['Per Page']),
-#                 fee_limit=clean_dollar_value(row['Fee Limit']),
-#                 page_1=clean_dollar_value(row['1 page']),
-#                 page_1_to_5=clean_dollar_value(row['1 to 5 pages']),
-#                 page_1_to_10=clean_dollar_value(row['1 to 10 pages']),
-#                 page_1_to_20=clean_dollar_value(row['1 to 20 pages']),
-#                 page_1_to_25=clean_dollar_value(row['1 to 25 pages']),
-#                 page_1_to_30=clean_dollar_value(row['1 to 30 pages']),
-#                 page_1_to_40=clean_dollar_value(row['1 to 40 pages']),
-#                 page_1_to_50=clean_dollar_value(row['1 to 50 pages']),
-#                 page_1_to_80=clean_dollar_value(row['1 to 80 pages']),
-#                 page_1_to_100=clean_dollar_value(row['1 to 100 pages']),
-#                 page_1_to_150=clean_dollar_value(row['1 to 150 pages']),
-#                 page_1_to_250=clean_dollar_value(row['1 to 250 pages']),
-#                 page_1_to_1000=clean_dollar_value(row['1 to 1000 pages']),
-#                 page_2_to_30=clean_dollar_value(row['2 to 30 pages']),
-#                 page_2_to_200=clean_dollar_value(row['2 to 200']),
-#                 page_11_to_20=clean_dollar_value(row['11 to 20 pages']),
-#                 page_11_to_40=clean_dollar_value(row['11 to 40 pages']),
-#                 page_11_to_50=clean_dollar_value(row['11 to 50 pages']),
-#                 page_21_to_30=clean_dollar_value(row['21 to 30 pages']),
-#                 page_21_to_40=clean_dollar_value(row['21 to 40 pages']),
-#                 page_21_to_50=clean_dollar_value(row['21 to 50 pages']),
-#                 page_21_to_60=clean_dollar_value(row['21 to 60 pages']),
-#                 page_21_to_100=clean_dollar_value(row['21 to 100 pages']),
-#                 page_21_to_500=clean_dollar_value(row['21 to 500 pages']),
-#                 page_26_to_100=clean_dollar_value(row['26 to 100 pages']),
-#                 page_26_to_350=clean_dollar_value(row['26 to 350 pages']),
-#                 page_31_to_100=clean_dollar_value(row['31 to 100 pages']),
-#                 page_101_to_200=clean_dollar_value(row['101 to 200 pages']),
-#                 above_5_pages=clean_dollar_value(row['Above 5 pages']),
-#                 above_10_pages=clean_dollar_value(row['Above 10 pages']),
-#                 above_20_pages=clean_dollar_value(row['Above 20 pages']),
-#                 above_25_pages=clean_dollar_value(row['Above 25 pages']),
-#                 above_30_pages=clean_dollar_value(row['Above 30 pages']),
-#                 above_40_pages=clean_dollar_value(row['Above 40 pages']),
-#                 above_50_pages=clean_dollar_value(row['Above 50 pages']),
-#                 above_60_pages=clean_dollar_value(row['Above 60 pages']),
-#                 above_80_pages=clean_dollar_value(row['Above 80 pages']),
-#                 above_100_pages=clean_dollar_value(row['Above 100 pages']),
-#                 above_150_pages=clean_dollar_value(row['Above 150 pages']),
-#                 above_200_pages=clean_dollar_value(row['Above 200 pages']),
-#                 above_250_pages=clean_dollar_value(row['Above 250 pages']),
-#                 above_350_pages=clean_dollar_value(row['Above 350 pages']),
-#                 above_500_pages=clean_dollar_value(row['Above 500 pages']),
-#                 above_1000_pages=clean_dollar_value(row['Above 1000 pages']),
-#                 required_fee=clean_dollar_value(row['Required fee']),
-#                 amount=clean_dollar_value(row['Amount']),
-#                 optional_fee=clean_dollar_value(row['Optional fee']),
-#                 amount_1=clean_dollar_value(row['Amount.1']),
-#                 optional_fee_1=clean_dollar_value(row['Optional fee.1']),
-#                 amount_2=clean_dollar_value(row['Amount.2']),
-#             )
-#             charging_list_entry.save()
-
-#         return JsonResponse({"status": "success", "message": "Data imported successfully."})
-#     else:
-#         return JsonResponse({"status": "fail", "message": "Invalid request method."})
 
 @csrf_exempt 
 def updateauthapprove(request):
@@ -187,9 +106,9 @@ def htmltopdf(html_content):
         os.makedirs(media_folder)
     timestampval = int(round(time.time() * 100000))
     pdf_file_path = os.path.join(media_folder, f'{timestampval}.pdf')
-    pdPath = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"  # Path to wkhtmltopdf
-    config = pdfkit.configuration(wkhtmltopdf=pdPath)
-    # config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
+    # pdPath = r"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe"  # Path to wkhtmltopdf
+    # config = pdfkit.configuration(wkhtmltopdf=pdPath)
+    config = pdfkit.configuration(wkhtmltopdf='/usr/bin/wkhtmltopdf')
     options = {
         'page-size': 'Letter',
         'encoding': 'UTF-8',
@@ -206,7 +125,7 @@ def send_email_with_document(emailid, cc_list, bcc_list, attachment_list, sub, h
     email = EmailMessage(
         subject=sub,
         body=html_content,
-        from_email='iverify@droidal.com',
+        from_email=settings.DEFAULT_FROM_EMAIL,
         to=[emailid],
         cc=cc_list,
         bcc=bcc_list,
@@ -242,7 +161,7 @@ def send_email_with_attachment(emailid, attachment_file):
     email = EmailMessage(
         subject='Invoice - Attached',
         body='Please find the attached Invoice for the given request',
-        from_email='iverify@droidal.com',
+        from_email=settings.DEFAULT_FROM_EMAIL,
         to=[emailid],
     )
 
@@ -506,7 +425,7 @@ def send_email_without_attachment(emailid, cc_list, bcc_list, sub, html_content,
     email = EmailMessage(
         subject=sub,
         body=html_content,
-        from_email='iverify@droidal.com',
+        from_email=settings.DEFAULT_FROM_EMAIL,
         to=[emailid],
         cc=cc_list,
         bcc=bcc_list,
@@ -535,7 +454,7 @@ def send_email_without_attachment(emailid, cc_list, bcc_list, sub, html_content,
 def send_email_view(sub,mailtype,toaddr,emailusername,evid):
     subject = sub
     message = sub
-    from_email = 'iverify@droidal.com'
+    from_email = settings.DEFAULT_FROM_EMAIL
     recipient_list = [toaddr]
     if mailtype=="new": 
         template_path = 'requestevmail.html'
@@ -624,8 +543,7 @@ def calculatepdfpage(request):
 
     
 
-
-@login_required
+ 
 def editupstream(request,id):
     if request.method == 'GET':
         overalldata = UpstreamForm.objects.get(request_id=id)
@@ -653,7 +571,7 @@ def editupstream(request,id):
             updatedata.approve_doc_status =  formdata['approval-checkbox']
             updatedata.approve_doc_path =  file_path
             updatedata.save()
-        return HttpResponseRedirect('/registration/')
+        return HttpResponseRedirect('/main/registration/')
 
 @csrf_exempt  
 def upstreamassignuser(request,id,aid):
@@ -674,10 +592,9 @@ def upstreamassignuser(request,id,aid):
         updatedata.ev_assigned_createddatetime=formatted_date 
         updatedata.save()
         send_email_view('New Record Assigned','assigned',asingedemail,asingedusername,id)
-        return HttpResponseRedirect('/registration/')
+        return HttpResponseRedirect('/main/registration/')
     
-
-@login_required
+ 
 def indexregisterupstreampage(request):
     if request.session.get('usertype') == 'admin':
         overalldata = UpstreamForm.objects.all().order_by('-request_id')
@@ -789,7 +706,7 @@ If you have any further questions or need immediate assistance, please feel free
 Thank you for your patience and understanding.
  
 Best regards,
-DroidPoint
+Upstream
 """
  
     email = EmailMessage(
@@ -870,10 +787,10 @@ Your request has been rejected. Please see the notes below:<br><br>
 
 If you have any additional questions or concerns, please reach out to <a href="mailto:roi@urpt.com">roi@urpt.com</a> or call <a href="tel:+18443196137">844-319-6137</a>.<br><br>
 
-If a new request is needed, please upload it at <a href="https://droidpoint.droidal.com/external_request/">Request Form</a>.<br><br>
+If a new request is needed, please upload it at <a href="https://chartstream.urpt.com/request-app/">Request Form</a>.<br><br>
 
 Best regards,<br>  
-DroidPoint
+Upstream
 """
     send_mail(
         subject=subject,
@@ -929,10 +846,9 @@ def upstreamstatusupdatereg(request):
         updatedata.ev_remarks=form['remarks'] 
         updatedata.ev_closed_createddatetime=formatted_date
         updatedata.save()
-        return HttpResponseRedirect('/registration/')
+        return HttpResponseRedirect('/main/registration/')
 
-
-@login_required
+ 
 def welcomeupstreampage(request):
     # print(request.session.items())
     # if request.session.get('usertype') == 'Internal-user':
@@ -997,7 +913,7 @@ def insert_upstream_form(request):
             request_file=request_file_path
         )
         form.save()
-        return HttpResponseRedirect('/registration/') 
+        return HttpResponseRedirect('/main/registration/') 
 
 
 
@@ -1094,7 +1010,7 @@ def send_acknowledgment_email(email, requestor_name, pk, patient_first_name, pat
 
     # Hardcode the base URL for local development
     # base_url = 'http://127.0.0.1:8000'  # Replace with your local URL if different
-    base_url = 'https://droidpoint.droidal.com/'
+    base_url = 'https://chartstream.urpt.com/request-app/'
 
     # Generate the track record URL dynamically
     track_url = reverse('track_record')  # Assuming you have a URL pattern named 'track_record'
@@ -1184,7 +1100,7 @@ def handle_file_upload(request):
         else:
             logger.warning(f"No available misc_path found for form {form.request_id}")
 
-        return JsonResponse({'file_url': file_url, 'num_pages': num_pages, 'total_pages': form.total_pages, 'total_amount': form.total_amount})
+        return JsonResponse({'file_url': 'main/'+file_url, 'num_pages': num_pages, 'total_pages': form.total_pages, 'total_amount': form.total_amount})
     
     logger.error("Invalid request method")
     return JsonResponse({'error': 'Invalid request'}, status=400)
@@ -1347,8 +1263,7 @@ def save_patient_data(request):
 
 
 
-
-@login_required
+ 
 def pricing_page(request):
     return render(request, 'pricing.html')
 
@@ -1469,50 +1384,6 @@ def get_charging_data_view(request):
             return JsonResponse({"status": "fail", "message": "State and Category are required."})
     else:
         return JsonResponse({"status": "fail", "message": "Invalid request method."})
-
-
-@csrf_exempt
-def track_record(request):
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        request_id = request.POST.get('request_id')
-        
-        try:
-            
-            record = UpstreamForm.objects.get(requestor_email=email, request_id=request_id)
-            return redirect('track_result', record_id=record.request_id)
-        except UpstreamForm.DoesNotExist:
-            context = {
-                'error': 'No records found for the provided email and request ID.',
-                'lottie_animation': True
-            }
-            return render(request, 'track_record.html', context)
-
-    return render(request, 'track_record.html')
-
-def track_result(request, record_id):
-    try:
-        
-        record = UpstreamForm.objects.get(request_id=record_id)
-        context = {'record': record}
-    except UpstreamForm.DoesNotExist:
-        context = {'error': 'No Records found !'}
-    
-    return render(request, 'track_result.html', context)
-
-
-   
-@csrf_exempt
-def website(request):
-    return render(request,'website.html')
-
-
-
-
-
-
-
-
 
 
 

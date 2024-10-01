@@ -30,8 +30,8 @@ from evrequest.views import evrequestpage,\
 from cas.views import insert_casform
 
 from upstreamform.views import insert_upstream_form,welcomeupstreampage,indexregisterupstreampage,delete_file,get_latest_invoice, get_charging_data_view, save_charging_data, download_all_pdfs, update_total_pages, \
-        editupstream,calculatepdfpage,get_total_pages,deleteupstream,external_request,upstreamassignuser,upstreamstatusupdatereg,get_existing_files, calculate_total_amount, \
-        sendinvoicerec,senddocumentmail,updateauthapprove, website, update_request_status, toggle_approval, generate_pdf, update_status, view_pdf, handle_file_upload, update_totals, update_status2, track_record, track_result, save_patient_data, pricing_page, save_dates_view
+        editupstream,calculatepdfpage,get_total_pages,deleteupstream,upstreamassignuser,upstreamstatusupdatereg,get_existing_files, calculate_total_amount, \
+        sendinvoicerec,senddocumentmail,updateauthapprove, update_request_status, toggle_approval, generate_pdf, update_status, view_pdf, handle_file_upload, update_totals, update_status2, save_patient_data, pricing_page, save_dates_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),

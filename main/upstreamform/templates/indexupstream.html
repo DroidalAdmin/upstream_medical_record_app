@@ -4,20 +4,12 @@
   <!-- [Head] start -->
 
   <head>
-    <title>Home | droi</title>
+    <title>Workflow | Upstream</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
-    />
-    <meta
-      name="keywords"
-      content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
-    />
-    <meta name="author" content="Phoenixcoded" />
+
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -189,7 +181,7 @@ label {
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="/welcome/" class="b-brand text-primary">
+      <a href="/main/welcome/" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
         <img src="{% static 'images/claimbridge.png' %}" class="img-fluid" width="160px" alt="logo" />
         <span class="badge bg-light-success rounded-pill ms-2 theme-version"></span>
@@ -240,7 +232,7 @@ label {
           <label></label>
         </li>
         <li class="pc-item">
-          <a href="/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
+          <a href="/main/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-story"></use>
@@ -250,7 +242,7 @@ label {
           </a>
         </li>
         <li class="pc-item pc-hasmenu">
-          <a href="/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
+          <a href="/main/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-fatrows"></use>
@@ -262,8 +254,20 @@ label {
   
         </li>
 
+        <!-- <li class="pc-item pc-hasmenu">
+          <a href="/main/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
+            <span class="pc-micon">
+              <svg class="pc-icon">
+                <use xlink:href="#custom-status-up"></use>
+              </svg>
+            </span>
+            <span class="pc-mtext"></span>
+             </a>
+   
+        </li> -->
+
         <li class="pc-item pc-hasmenu">
-          <a href="/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
+          <a href="#" class="pc-link" data-toggle="tooltip" title="Analytics">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-status-up"></use>
@@ -276,7 +280,7 @@ label {
 
         {% if request.session.usertype == 'admin' %}
             <li class="pc-item pc-hasmenu">
-              <a href="/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
+              <a href="/main/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-dollar-square"></use>
@@ -290,7 +294,7 @@ label {
             {% endif %}
 
         <li class="pc-item pc-hasmenu">
-          <a href="/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
+          <a href="/main/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
             <span class="pc-micon">
               <svg class="pc-icon me-2">
                 <use xlink:href="#custom-logout-1-outline"></use>
@@ -387,7 +391,7 @@ label {
                                 onmouseout="this.style.color='#000000a8'">
                                   <i class="fa fa-trash"></i>
                               </a>
-                              <a href="/edit/{{ data.request_id }}" class="on-default edit-row" data-toggle="tooltip" title="Add Info" style="color: #000000a8; font-size: 15px; margin-right: 4px;" onmouseover="this.style.color='#000000'" 
+                              <a href="/main/edit/{{ data.request_id }}" class="on-default edit-row" data-toggle="tooltip" title="Add Info" style="color: #000000a8; font-size: 15px; margin-right: 4px;" onmouseover="this.style.color='#000000'" 
                               onmouseout="this.style.color='#000000a8'"><i class="fa fa-plus"></i></a>
                               <!-- <a href="javascript:void(0);" onclick="viewMultiplePDFs('{{ data.request_id }}');" class="on-default download-row" data-toggle="tooltip" title="View" style="color: blue; font-size: 18px; margin-right: 4px;">
                                   <i class="fas fa-eye"></i>
@@ -415,7 +419,7 @@ label {
                               onmouseout="this.style.color='#000000a8'">
                                   <i class="fas fa-eye"></i>
                               </a>
-                              <a href="/edit/{{ data.request_id }}" class="on-default edit-row" data-toggle="tooltip" title="Add Info" style="color: #000000a8; font-size: 15px; margin-right: 4px;" onmouseover="this.style.color='#000000'" 
+                              <a href="/main/edit/{{ data.request_id }}" class="on-default edit-row" data-toggle="tooltip" title="Add Info" style="color: #000000a8; font-size: 15px; margin-right: 4px;" onmouseover="this.style.color='#000000'" 
                               onmouseout="this.style.color='#000000a8'"><i class="fa fa-plus"></i></a><br>
                               <button class="btn btn-primary" data-toggle="tooltip" title="Move to" onclick="openMoveToModal('{{ data.request_id }}')" style="margin-left: 5px; padding: -5px; border-radius: 5px; font-size: 11px;">Move to</button>
                               
@@ -1184,7 +1188,7 @@ localStorage.setItem('layout', 'compact');
                 
                 // Send an AJAX request to update the status in the backend
                 $.ajax({
-                    url: '/update_request_status/',
+                    url: '/main/update_request_status/',
                     method: 'POST',
                     data: {
                         request_id: requestId,
@@ -1243,7 +1247,7 @@ localStorage.setItem('layout', 'compact');
     
         // Send AJAX request to update the approval status
         $.ajax({
-            url: '/toggle_approval/',
+            url: '/main/toggle_approval/',
             method: 'POST',
             data: {
                 request_id: requestId,
@@ -1297,7 +1301,7 @@ localStorage.setItem('layout', 'compact');
         }
         
         // Send the data to the server using fetch or AJAX
-        fetch('/updateStatus/', {
+        fetch('/main/updateStatus/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -1357,7 +1361,7 @@ localStorage.setItem('layout', 'compact');
         }
         
         // Send the data to the server using fetch or AJAX
-        fetch('/updateStatus2/', {
+        fetch('/main/updateStatus2/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -1617,7 +1621,7 @@ function downloadMultiplePDFs(requestId) {
             if (result) {
                 
                 $.ajax({
-                    url: '/deleteupstream/' + requestId + '/',
+                    url: '/main/deleteupstream/' + requestId + '/',
                     type: 'POST',
                     headers: {
                         'X-CSRFToken': getCookie('csrftoken')

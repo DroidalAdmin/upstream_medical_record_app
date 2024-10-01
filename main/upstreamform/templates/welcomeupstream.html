@@ -8,7 +8,7 @@
       <!-- [Head] start -->
     
       <head>
-        <title>Home | droi</title>
+        <title>Dashboard | Upstream</title>
         <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -167,7 +167,7 @@ label {
     <nav class="pc-sidebar">
       <div class="navbar-wrapper">
         <div class="m-header">
-          <a href="/welcome/" class="b-brand text-primary">
+          <a href="/main/welcome/" class="b-brand text-primary">
             <!-- ========   Change your logo from here   ============ -->
             <img src="{% static 'images/claimbridge.png' %}" class="img-fluid" width="160px" alt="logo" />
             <span class="badge bg-light-success rounded-pill ms-2 theme-version"></span>
@@ -219,7 +219,7 @@ label {
               <label></label>
             </li>
             <li class="pc-item">
-              <a href="/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
+              <a href="/main/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-story"></use>
@@ -229,7 +229,7 @@ label {
               </a>
             </li>
             <li class="pc-item pc-hasmenu">
-              <a href="/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
+              <a href="/main/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-fatrows"></use>
@@ -241,8 +241,20 @@ label {
       
             </li>
     
+            <!-- <li class="pc-item pc-hasmenu">
+              <a href="/main/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
+                <span class="pc-micon">
+                  <svg class="pc-icon">
+                    <use xlink:href="#custom-status-up"></use>
+                  </svg>
+                </span>
+                <span class="pc-mtext"></span>
+                 </a>
+       
+            </li> -->
+
             <li class="pc-item pc-hasmenu">
-              <a href="/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
+              <a href="#" class="pc-link" data-toggle="tooltip" title="Analytics">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-status-up"></use>
@@ -255,7 +267,7 @@ label {
 
             {% if request.session.usertype == 'admin' %}
             <li class="pc-item pc-hasmenu">
-              <a href="/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
+              <a href="/main/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-dollar-square"></use>
@@ -269,7 +281,7 @@ label {
             {% endif %}
     
             <li class="pc-item pc-hasmenu">
-              <a href="/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
+              <a href="/main/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
                 <span class="pc-micon">
                   <svg class="pc-icon me-2">
                     <use xlink:href="#custom-logout-1-outline"></use></svg>

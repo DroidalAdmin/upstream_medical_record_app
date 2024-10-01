@@ -69,7 +69,7 @@
                             {{ message }}
                         </div>
                     {% endfor %}
-                                    <form class="form-horizontal" method="POST" action="/login/">
+                                    <form class="form-horizontal" method="POST" action="/main/login/">
                                       {% csrf_token %}
 
                                         <div class="form-group ">
@@ -98,13 +98,13 @@
                                         <label class="form-check-label text-muted" for="customCheckc1">Remember me?</label>
                                     </div>                                    
                                      <h6 class="text-secondary f-w-400 mb-0">
-                                        <a href="/forgot_password/"> Forgot Password? </a>
+                                        <a href="/main/forgot_password/"> Forgot Password? </a>
                                       </h6> 
                                     </div>
                                     
                                     <div class="d-flex justify-content-between align-items-end mt-4">
                                       <h6 class="f-w-500 mb-0">Don't have an Account?</h6>
-                                      <a href="/signup" class="link-primary">Signup</a>
+                                      <a href="/main/signup" class="link-primary">Signup</a>
                                     </div>
 
                                     

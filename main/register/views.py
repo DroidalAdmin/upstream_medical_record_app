@@ -58,7 +58,7 @@ def logout_view(request):
         del request.session['username']
 
     logout(request)
-    return HttpResponseRedirect('/login/')
+    return HttpResponseRedirect('/main/login/')
 
 
 # def md5_hash_password(raw_password):
@@ -129,12 +129,12 @@ def Signup(request):
         # Check if the email already exists
         if UserDetails.objects.filter(user_email=email).exists():
             messages.error(request, 'Email already exists. Please choose a different one.')
-            return HttpResponseRedirect('/signup/')
+            return HttpResponseRedirect('/main/signup/')
 
         # Check if the username already exists
         if UserDetails.objects.filter(user_username=user).exists():
             messages.error(request, 'Username already exists. Please choose a different one.')
-            return HttpResponseRedirect('/signup/')
+            return HttpResponseRedirect('/main/signup/')
 
         secretkey, qrpath = qrcode_generate(user)
         try:
@@ -155,7 +155,7 @@ def Signup(request):
         
         if userdet:
             send_email_view(email, user, password, qrpath)
-            return HttpResponseRedirect('/login/')
+            return HttpResponseRedirect('/main/login/')
         else:
             return render(request, 'signup.html')
 
@@ -201,7 +201,7 @@ def login_page(request):
                     # Log in the user
                     login(request, user)
                     
-                    return HttpResponseRedirect('/welcome/')
+                    return HttpResponseRedirect('/main/welcome/')
             else:
                 messages.error(request, 'Invalid Passcode Given!')
                 return render(request, 'login.html', {'form': form})
@@ -323,7 +323,7 @@ def verify_email_otp(request):
             otp_provided = data.get('otp')
 
             if str(otp_provided) == str(otp_sent):
-                return JsonResponse({'success': True, 'message': 'OTP verified successfully.', 'redirect_url': '/reset_password/'})
+                return JsonResponse({'success': True, 'message': 'OTP verified successfully.', 'redirect_url': '/main/reset_password/'})
             else:
                 return JsonResponse({'success': False, 'message': 'Invalid OTP. Please try again.'})
 
@@ -353,7 +353,7 @@ def reset_password_update(request):
             user.save()
 
             messages.success(request, 'Your password has been reset successfully.')
-            return HttpResponseRedirect('/login/')
+            return HttpResponseRedirect('/main/login/')
         
         except UserDetails.DoesNotExist:
             msg = messages.error(request, 'User does not exist.')

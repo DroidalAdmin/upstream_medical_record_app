@@ -8,7 +8,7 @@
   <!-- [Head] start -->
 
   <head>
-    <title>Home | droi</title>
+    <title>Analytics | Upstream</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
@@ -59,7 +59,7 @@
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="/welcome/" class="b-brand text-primary">
+      <a href="/main/welcome/" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
         <img src="{% static 'images/claimbridge.png' %}" class="img-fluid" width="160px" alt="logo" />
         <span class="badge bg-light-success rounded-pill ms-2 theme-version"></span>
@@ -109,7 +109,7 @@
           <label></label>
         </li>
         <li class="pc-item">
-          <a href="/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
+          <a href="/main/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-story"></use>
@@ -119,7 +119,7 @@
           </a>
         </li>
         <li class="pc-item pc-hasmenu">
-          <a href="/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
+          <a href="/main/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-fatrows"></use>
@@ -132,7 +132,7 @@
         </li>
 
         <li class="pc-item pc-hasmenu">
-          <a href="/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
+          <a href="/main/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-status-up"></use>
@@ -145,7 +145,7 @@
 
         {% if request.session.usertype == 'admin' %}
             <li class="pc-item pc-hasmenu">
-              <a href="/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
+              <a href="/main/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-dollar-square"></use>
@@ -159,7 +159,7 @@
             {% endif %}
 
         <li class="pc-item pc-hasmenu">
-          <a href="/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
+          <a href="/main/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-logout-1-outline"></use>
@@ -702,7 +702,7 @@
                                         <div class="container mt-3">
                                           <div class="row mb-3">
                                               <div class="col-md-6">
-                                                  <form id="daterange-form" action="/daterange/" class="form-inline d-flex justify-content-between" style="margin-left: 5%;">
+                                                  <form id="daterange-form" action="/main/daterange/" class="form-inline d-flex justify-content-between" style="margin-left: 5%;">
                                                       <div class="form-group mb-2">
                                                           <input type="date" class="form-control" id="from-date" name="fromdate">
                                                       </div>

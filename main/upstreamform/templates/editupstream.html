@@ -7,20 +7,12 @@
   <!-- [Head] start -->
 
   <head>
-    <title>Home | droi</title>
+    <title>Edit | Upstream</title>
     <!-- [Meta] -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="description"
-      content="Able Pro is trending dashboard template made using Bootstrap 5 design framework. Able Pro is available in Bootstrap, React, CodeIgniter, Angular,  and .net Technologies."
-    />
-    <meta
-      name="keywords"
-      content="Bootstrap admin template, Dashboard UI Kit, Dashboard Template, Backend Panel, react dashboard, angular dashboard"
-    />
-    <meta name="author" content="Phoenixcoded" />
+
 
     <!-- [Favicon] icon -->
     <link rel="icon" href="{% static 'images/claimbridge.png' %}" type="image/x-icon" />
@@ -333,7 +325,7 @@
 <nav class="pc-sidebar">
   <div class="navbar-wrapper">
     <div class="m-header">
-      <a href="/welcome/" class="b-brand text-primary">
+      <a href="/main/welcome/" class="b-brand text-primary">
         <!-- ========   Change your logo from here   ============ -->
         <img src="{% static 'images/claimbridge.png' %}" class="img-fluid" width="160px" alt="logo" />
         <span class="badge bg-light-success rounded-pill ms-2 theme-version"></span>
@@ -384,7 +376,7 @@
           <label></label>
         </li>
         <li class="pc-item">
-          <a href="/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
+          <a href="/main/welcome/" class="pc-link" data-toggle="tooltip" title="Dashboard">
             <span class="pc-micon">
               <svg class="pc-icon">
                 <use xlink:href="#custom-story"></use>
@@ -396,7 +388,7 @@
 
 
         <li class="pc-item pc-hasmenu">
-          <a href="/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
+          <a href="/main/registration/" class="pc-link" data-toggle="tooltip" title="Workflow">
             
 
             <span class="pc-micon">
@@ -410,8 +402,8 @@
   
         </li>
 
-        <li class="pc-item pc-hasmenu">
-          <a href="/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
+        <!-- <li class="pc-item pc-hasmenu">
+          <a href="/main/analytics/" class="pc-link" data-toggle="tooltip" title="Analytics">
             <span class="pc-micon">
                 <svg class="pc-icon">
                   <use xlink:href="#custom-status-up"></use>
@@ -420,11 +412,23 @@
             <span class="pc-mtext"></span>
              </a>
    
-        </li>
+        </li> -->
+
+        <li class="pc-item pc-hasmenu">
+            <a href="#" class="pc-link" data-toggle="tooltip" title="Analytics">
+              <span class="pc-micon">
+                  <svg class="pc-icon">
+                    <use xlink:href="#custom-status-up"></use>
+                  </svg>
+                </span>
+              <span class="pc-mtext"></span>
+               </a>
+     
+          </li>
 
         {% if request.session.usertype == 'admin' %}
             <li class="pc-item pc-hasmenu">
-              <a href="/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
+              <a href="/main/pricing_page/" class="pc-link" data-toggle="tooltip" title="Charges">
                 <span class="pc-micon">
                   <svg class="pc-icon">
                     <use xlink:href="#custom-dollar-square"></use>
@@ -438,7 +442,7 @@
             {% endif %}
 
         <li class="pc-item pc-hasmenu">
-          <a href="/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
+          <a href="/main/logout/" class="pc-link" data-toggle="tooltip" title="Logout">
             <span class="pc-micon">
                 <svg class="pc-icon me-2">
                     <use xlink:href="#custom-logout-1-outline"></use>
@@ -1796,7 +1800,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function fetchExistingFiles() {
     const requestId = document.getElementById('request-id').value;
 
-    fetch(`/get_existing_files/${requestId}/`, {
+    fetch(`/main/get_existing_files/${requestId}/`, {
         method: 'GET',
         headers: {
             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
@@ -1920,7 +1924,7 @@ function newHandleFileUpload(event) {
         const file_from_date = document.getElementById('request-id').value;
 
         const xhr = new XMLHttpRequest();
-        xhr.open('POST', '/handle_file_upload/', true);
+        xhr.open('POST', '/main/handle_file_upload/', true);
 
         // Set CSRF token header
         xhr.setRequestHeader('X-CSRFToken', document.querySelector('[name=csrfmiddlewaretoken]').value);
@@ -2028,7 +2032,7 @@ function newDeleteFile(fileUrl, rowId) {
     formData.append('file_url', fileUrl);
     formData.append('requestid', requestId);
 
-    fetch('/delete_file/', {
+    fetch('/main/delete_file/', {
         method: 'POST',
         body: formData,
         headers: {
@@ -2102,7 +2106,7 @@ function newDeleteFile(fileUrl, rowId) {
     const requestId = document.getElementById('request-id').value;
     formData.append('requestid', requestId);
 
-    fetch('/calculatepdfpage/', {
+    fetch('/main/calculatepdfpage/', {
         method: 'POST',
         body: formData,
         headers: {
@@ -2232,7 +2236,7 @@ function sendInvoiceReceipt() {
     formData.append('balance', document.getElementById('balance').value);
     
 
-    fetch('/sendinvoicerec/', {
+    fetch('/main/sendinvoicerec/', {
         method: 'POST',
         body: formData,
         headers: {
@@ -2287,7 +2291,7 @@ function generateInvoice() {
         }
 
         // Fetch the dynamic calculation details based on state and category
-        fetch(`/calculate_total_amount/${state}/${category}/${totalPages}/`, {
+        fetch(`/main/calculate_total_amount/${state}/${category}/${totalPages}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -2343,7 +2347,7 @@ function generateInvoice() {
             saveDates();
 
             // Send the data via a POST request to generate the PDF
-            fetch('/generatepdf/', {
+            fetch('/main/generatepdf/', {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -2402,7 +2406,7 @@ function saveDates() {
     // Repeat for each file date
 
     // Send the data to the backend using AJAX (you can also use form submission)
-    fetch('/save_dates/', {
+    fetch('/main/save_dates/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -2452,7 +2456,7 @@ function updateTotalAmount() {
   
 function fetchLatestInvoicePath(callback) {
     const requestId = document.getElementById('request-id').value;
-    fetch(`/get_latest_invoice/${requestId}/`, {
+    fetch(`/main/get_latest_invoice/${requestId}/`, {
         method: 'GET',
         headers: {
             'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
@@ -2476,23 +2480,23 @@ function fetchLatestInvoicePath(callback) {
 function viewInvoice() {
     if (!generatedPdfPath) {
         fetchLatestInvoicePath(() => {
-            window.open(`/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
+            window.open(`/main/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
         });
     } else {
-        window.open(`/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
+        window.open(`/main/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
     }
 }
 
 function printInvoice() {
     if (!generatedPdfPath) {
         fetchLatestInvoicePath(() => {
-            const printWindow = window.open(`/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
+            const printWindow = window.open(`/main/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
             printWindow.onload = function() {
                 printWindow.print();
             };
         });
     } else {
-        const printWindow = window.open(`/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
+        const printWindow = window.open(`/main/viewpdf/?pdfpath=${encodeURIComponent(generatedPdfPath)}`, '_blank');
         printWindow.onload = function() {
             printWindow.print();
         };
@@ -2537,7 +2541,7 @@ function sendDocuments() {
         formData.append('pdfpath', generatedPdfPath);  // Include the invoice PDF path
     }
 
-    fetch('/senddocumentmail/', {
+    fetch('/main/senddocumentmail/', {
         method: 'POST',
         body: formData,
         headers: {
@@ -2577,7 +2581,7 @@ document.getElementById('save-patient-data').addEventListener('click', function(
     // }
 
     // Send the collected data to the backend
-    fetch('/save_patient_data/', {
+    fetch('/main/save_patient_data/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -2729,7 +2733,7 @@ function fetchInitialCalculation() {
     const totalPages = document.getElementById('total-pages').value;
 
     if (state && category) {
-        fetch(`/calculate_total_amount/${state}/${category}/${totalPages}/`, {
+        fetch(`/main/calculate_total_amount/${state}/${category}/${totalPages}/`, {
             method: 'GET',
             headers: {
                 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
@@ -2873,7 +2877,7 @@ function updateTotalPagesAndAmount() {
 
     // If both state and category are selected, make the API call
     if (state && category) {
-        fetch(`/calculate_total_amount/${state}/${category}/${totalPages}/`, {
+        fetch(`/main/calculate_total_amount/${state}/${category}/${totalPages}/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
