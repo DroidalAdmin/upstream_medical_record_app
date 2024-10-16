@@ -1357,7 +1357,7 @@
                                           </div>
                                           <div class="row" style="margin-top: 2%;">
                                               <label class="col-sm-4" for="company" style="font-size: 15px; font-weight: 700">Message Content</label> 
-                                              <textarea type="text" id="tomsgcontent" rows="8" cols="50" style="border-radius: 5px;">Dear {{data.requestor_name}} ,&#13;&#10;We are pleased to inform you that your requested medical records have been processed and are attached via link(s) to this email.&#13;&#10;The invoice is attached Seperately. Please see details on invoice for payment instructions. If you have any further questions or need additional assistance, please feel free to contact our office at <b>( 844 ) 319-6137</b> or via email at <b>roi@urpt.com.</b>.&#13;&#10;Thank you for your patience.&#13;&#10;Best regards,&#13;&#10;DroidPoint</textarea> 
+                                              <textarea type="text" id="tomsgcontent" rows="8" cols="50" style="border-radius: 5px;">Dear {{data.requestor_name}} ,&#13;&#10;We are pleased to inform you that your requested medical records have been processed and are attached via link(s) to this email.&#13;&#10;The invoice is attached Seperately. Please see details on invoice for payment instructions. If you have any further questions or need additional assistance, please feel free to contact our office at <b>( 844 ) 319-6137</b> or via email at <b>roi@urpt.com.</b>.&#13;&#10;Thank you for your patience.&#13;&#10;Best regards,&#13;&#10;Upstream</textarea> 
                                           </div>
                                           <div class="col-md-12">
                                               <button class="btn btn-sm btn-primary" style="margin-top: 1%; float: right;" onclick="sendDocuments()">Send Documents</button>
@@ -2006,7 +2006,9 @@ function newDisplayUploadedPDF(rowId, fileUrl, numPages) {
     const filePagesCell = document.getElementById(`file-pages-${rowId}`);
     const fileActionCell = document.getElementById(`file-action-${rowId}`);
 
-    fileNameCell.innerHTML = `<a href="${fileUrl}" target="_blank">${fileUrl.split('/').pop()}</a>`;
+    const fileName = decodeURIComponent(fileUrl.split('/').pop());
+
+    fileNameCell.innerHTML = `<a href="${fileUrl}" target="_blank">${fileName}</a>`;
     filePagesCell.innerText = `${numPages}`;
     fileActionCell.innerHTML = `<button type="button" class="btn btn-danger btn-sm" onclick="newDeleteFile('${fileUrl}', ${rowId})"><i class="fa fa-trash"></i></button>`;
 
@@ -2014,13 +2016,23 @@ function newDisplayUploadedPDF(rowId, fileUrl, numPages) {
 
     // Add to the pdfcontents div if not already present
     const pdfContentsDiv = document.getElementById('pdfcontents');
-    const existingPdfDiv = Array.from(pdfContentsDiv.children).find(div => div.innerText.includes(fileUrl.split('/').pop()));
+
+    // Decode the file name
+    const pdffileName = decodeURIComponent(fileUrl.split('/').pop());
+
+    // Check if the PDF div already exists
+    const existingPdfDiv = Array.from(pdfContentsDiv.children).find(div => div.innerText.includes(pdffileName));
+
     if (!existingPdfDiv) {
+        // Create a new PDF div with decoded file name
         const pdfDiv = document.createElement('div');
         pdfDiv.className = 'col-md-3';
-        pdfDiv.innerHTML = `<img src="${pdfIconPath}" alt="PDF Icon" style="width: 20px; height: 20px; margin-right: 5px;"><a href="${fileUrl}" target="_blank">${fileUrl.split('/').pop()}</a>`;
+        pdfDiv.innerHTML = `
+            <img src="${pdfIconPath}" alt="PDF Icon" style="width: 20px; height: 20px; margin-right: 5px;">
+            <a href="${fileUrl}" target="_blank">${pdffileName}</a>`;
         pdfContentsDiv.appendChild(pdfDiv);
     }
+
 
 }
 
@@ -2032,7 +2044,7 @@ function newDeleteFile(fileUrl, rowId) {
     formData.append('file_url', fileUrl);
     formData.append('requestid', requestId);
 
-    fetch('/main/delete_file/', {
+    fetch('/delete_file/', {
         method: 'POST',
         body: formData,
         headers: {
@@ -2042,7 +2054,6 @@ function newDeleteFile(fileUrl, rowId) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            
             const fileRow = document.getElementById(`file-row-${rowId}`);
             if (fileRow) {
                 fileRow.style.display = 'none';
@@ -2051,22 +2062,24 @@ function newDeleteFile(fileUrl, rowId) {
                 fileRow.querySelector(`#file-action-${rowId}`).innerHTML = '';
             }
 
-            
+            // Remove the file from the newSessionFiles array
             newSessionFiles = newSessionFiles.filter(file => file !== fileUrl);
 
-            
             if (newSessionFiles.length === 0) {
                 document.getElementById('no-data').style.display = '';
             }
 
-            
+            // Decode the file name for removal
+            const fileName = decodeURIComponent(fileUrl.split('/').pop());
+
+            // Remove the corresponding div from the pdfcontents div
             const pdfContentsDiv = document.getElementById('pdfcontents');
-            const pdfDivToRemove = Array.from(pdfContentsDiv.children).find(div => div.innerText.includes(fileUrl.split('/').pop()));
+            const pdfDivToRemove = Array.from(pdfContentsDiv.children).find(div => div.innerText.includes(fileName));
             if (pdfDivToRemove) {
                 pdfContentsDiv.removeChild(pdfDivToRemove);
             }
 
-            
+            // Update total pages and amount
             updateTotalPagesAndAmount();
         } else {
             alert('Failed to delete file.');

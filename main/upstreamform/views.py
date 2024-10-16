@@ -379,7 +379,7 @@ def senddocumentmail(request):
         # Helper function to construct a file URL
         def construct_file_url(path):
             file_url = request.build_absolute_uri(f'{settings.MEDIA_URL}{quote(path)}')
-            file_url = file_url.replace('/media//media/', '/media/')
+            file_url = file_url.replace('/media/main//media/', '/media/')
             file_url = file_url.replace('%2520', '%20')  # Correct space encoding
             return file_url
 
